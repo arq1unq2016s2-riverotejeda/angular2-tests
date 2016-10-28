@@ -21,22 +21,32 @@ var Survey = (function () {
         //  console.log(ss.subjects());
         //console.log(ss.getSubjects());
         //console.log(this.subjects);
-        this.ngOnInit();
-        console.log('constructor');
+        //  this.ngOnInit();
+        //console.log('constructor');
+        if (!(this.loading)) {
+            console.log(this.subjects);
+        }
+        ;
     }
     Survey.prototype.ngOnInit = function () {
-        this._dataService
+        /*this._dataService
             .GetAll()
-            .subscribe(function (data) { return console.log(data); });
-        /* error => console.log(error),
-         () => {
-           this._toasterService.pop('success', 'Complete', 'Getting all values complete');
-           this._slimLoadingBarService.complete();
-         });
-         "typings": "^1.4.0"
-         */
+            .subscribe(data => console.log(data));
+               /* error => console.log(error),
+                () => {
+                  this._toasterService.pop('success', 'Complete', 'Getting all values complete');
+                  this._slimLoadingBarService.complete();
+                });
+                "typings": "^1.4.0"
+                */
         //      console.log(this.subjects);
-        console.log('ngOnInit');
+        //   console.log('ngOnInit');
+        this.getSubjects();
+        console.log(this.subjects);
+    };
+    Survey.prototype.getSubjects = function () {
+        var _this = this;
+        this._dataService.GetAll().subscribe(function (res) { _this.subjects = res, console.log(_this.subjects), _this.loading = false; });
     };
     Survey = __decorate([
         core_1.Component({
