@@ -33,7 +33,7 @@ var SurveyService = (function () {
         /* return this.http.get(this.heroesUrl)
              .map(res => <Survey[]> res.json())re
              .subscribe(data => this.subjectsData = data);*/
-        fetch(this.heroesUrl).then(function (response) {
+        return fetch(this.heroesUrl).then(function (response) {
             console.log(response.json());
             return response.json();
         }).then(function (data) {
