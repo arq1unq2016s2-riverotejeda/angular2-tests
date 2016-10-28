@@ -5,6 +5,8 @@ import 'rxjs/Rx';
 import {DataService} from "./data.service";
 
 
+
+
 @Component({
   selector: 'my-app',
   template: '<h1>H</h1>',
@@ -16,7 +18,9 @@ export class Survey implements  OnInit{
     public subjects : Array<any>;
     public loading : Boolean;
 
+
   constructor (private http: Http, private _dataService: DataService){
+
   // var  ss = new DataService(http);
   //  console.log(ss.subjects());
     //console.log(ss.getSubjects());
@@ -29,7 +33,16 @@ export class Survey implements  OnInit{
   }
 
 
+
   ngOnInit(){
+
+
+
+    this._dataService
+        .GetAll()
+        .subscribe(data => {this.subjects = data,  console.log(this.subjects);},
+            error => console.log(error)
+            );
     /*this._dataService
         .GetAll()
         .subscribe(data => console.log(data));
@@ -43,16 +56,24 @@ export class Survey implements  OnInit{
 //      console.log(this.subjects);
  //   console.log('ngOnInit');
 
-    this.getSubjects();
+  /*  this.getSubjects();
   /*  while (this.loading) {
       console.log('cargando...');
     }*/
-    if(!(this.loading)) {    console.log(this.subjects)};
-    console.log(this.subjects);
+   /* if(!(this.loading)) {    console.log(this.subjects)};
+    console.log(this.subjects);*/
+
   }
 
   getSubjects() {
-    this._dataService.GetAll().subscribe(res =>  {this.subjects = res, console.log(this.subjects), this.loading =false});
+
+
+
+
+
+
+
+   /*return this._dataService.GetAll().subscribe(res =>  {this.subjects = res, console.log(this.subjects), this.loading =false});*/
 
   }
 

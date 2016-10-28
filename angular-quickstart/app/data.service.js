@@ -17,9 +17,7 @@ var DataService = (function () {
         var _this = this;
         this._http = _http;
         this.GetAll = function () {
-            return _this._http.get(_this.actionUrl)
-                .map(function (response) { return response.json(); })
-                .catch(_this.handleError);
+            return _this._http.get(_this.actionUrl).map(function (response) { return response.json(); });
         };
         this.actionUrl = 'http://localhost:9090/subjects';
         this.headers = new http_1.Headers();

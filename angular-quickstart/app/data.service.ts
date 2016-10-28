@@ -17,12 +17,14 @@ export class DataService {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
         this.headers.append('Accept', 'application/json');
+
     }
 
-    public GetAll = (): Observable<any[]> => {
-        return this._http.get(this.actionUrl)
-            .map((response: Response) => <any[]>response.json())
-            .catch(this.handleError);
+
+
+
+    public GetAll = (): Observable<any> => {
+        return this._http.get(this.actionUrl).map((response: Response) => <any>response.json());
     }
 
    /* public GetSingle = (id: number): Observable<MyTypedItem> => {

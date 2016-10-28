@@ -13,6 +13,7 @@ var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
 var http_1 = require("@angular/http");
 var platform_browser_dynamic_1 = require("@angular/platform-browser-dynamic");
+var data_service_1 = require('./data.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -20,6 +21,9 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, http_1.HttpModule],
             declarations: [app_component_1.Survey],
+            providers: [
+                data_service_1.DataService,
+            ],
             bootstrap: [app_component_1.Survey]
         }), 
         __metadata('design:paramtypes', [])

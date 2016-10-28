@@ -27,6 +27,10 @@ var Survey = (function () {
         // if(!(this.loading)) {    console.log(this.subjects)};
     }
     Survey.prototype.ngOnInit = function () {
+        var _this = this;
+        this._dataService
+            .GetAll()
+            .subscribe(function (data) { _this.subjects = data, console.log(_this.subjects); }, function (error) { return console.log(error); });
         /*this._dataService
             .GetAll()
             .subscribe(data => console.log(data));
@@ -39,19 +43,15 @@ var Survey = (function () {
                 */
         //      console.log(this.subjects);
         //   console.log('ngOnInit');
-        this.getSubjects();
+        /*  this.getSubjects();
         /*  while (this.loading) {
             console.log('cargando...');
           }*/
-        if (!(this.loading)) {
-            console.log(this.subjects);
-        }
-        ;
-        console.log(this.subjects);
+        /* if(!(this.loading)) {    console.log(this.subjects)};
+         console.log(this.subjects);*/
     };
     Survey.prototype.getSubjects = function () {
-        var _this = this;
-        this._dataService.GetAll().subscribe(function (res) { _this.subjects = res, console.log(_this.subjects), _this.loading = false; });
+        /*return this._dataService.GetAll().subscribe(res =>  {this.subjects = res, console.log(this.subjects), this.loading =false});*/
     };
     Survey = __decorate([
         core_1.Component({
