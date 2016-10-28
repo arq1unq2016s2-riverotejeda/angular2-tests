@@ -23,7 +23,9 @@ export class Survey implements  OnInit{
       //console.log(this.subjects);
   //  this.ngOnInit();
     //console.log('constructor');
-    if(!(this.loading)) {    console.log(this.subjects)};
+    this.loading = true;
+   // if(!(this.loading)) {    console.log(this.subjects)};
+
   }
 
 
@@ -42,6 +44,10 @@ export class Survey implements  OnInit{
  //   console.log('ngOnInit');
 
     this.getSubjects();
+  /*  while (this.loading) {
+      console.log('cargando...');
+    }*/
+    if(!(this.loading)) {    console.log(this.subjects)};
     console.log(this.subjects);
   }
 

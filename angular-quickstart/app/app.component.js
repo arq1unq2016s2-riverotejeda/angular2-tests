@@ -23,10 +23,8 @@ var Survey = (function () {
         //console.log(this.subjects);
         //  this.ngOnInit();
         //console.log('constructor');
-        if (!(this.loading)) {
-            console.log(this.subjects);
-        }
-        ;
+        this.loading = true;
+        // if(!(this.loading)) {    console.log(this.subjects)};
     }
     Survey.prototype.ngOnInit = function () {
         /*this._dataService
@@ -42,6 +40,13 @@ var Survey = (function () {
         //      console.log(this.subjects);
         //   console.log('ngOnInit');
         this.getSubjects();
+        /*  while (this.loading) {
+            console.log('cargando...');
+          }*/
+        if (!(this.loading)) {
+            console.log(this.subjects);
+        }
+        ;
         console.log(this.subjects);
     };
     Survey.prototype.getSubjects = function () {
