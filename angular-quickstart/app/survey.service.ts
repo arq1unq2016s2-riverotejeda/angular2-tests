@@ -20,7 +20,7 @@ export class SurveyService {
 
     private subjectsData;
     constructor(private http: Http) {
-        this.subjectsData = this.getSubjects();
+       // this.subjectsData = this.getSubjects();
         console.log(this.subjectsData);
     }
 
@@ -28,13 +28,13 @@ export class SurveyService {
         return this.subjectsData;
     }
 
-    getSubjects() : Promise<Survey[]> {
+    /*getSubjects() : Promise<Survey[]> {
       /* return this.http.get(this.heroesUrl).toPromise()
            .then(response => response.json().data as Survey[]);*/
        /* return this.http.get(this.heroesUrl)
             .map(res => <Survey[]> res.json())re
             .subscribe(data => this.subjectsData = data);*/
-        return fetch(this.heroesUrl).then((response) => {
+       /* return fetch(this.heroesUrl).then((response) => {
             console.log(response.json())
             return response.json();
         }).then((data) => {
@@ -42,6 +42,6 @@ export class SurveyService {
         }).catch((ex) => {
             console.error('Error fetching users', ex);
         });
-    }
+    }*/
 
 }

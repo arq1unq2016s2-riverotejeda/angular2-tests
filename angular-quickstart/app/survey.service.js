@@ -20,27 +20,11 @@ var SurveyService = (function () {
     function SurveyService(http) {
         this.http = http;
         this.heroesUrl = 'http://localhost:9090/subjects'; // URL to web api
-        this.subjectsData = this.getSubjects();
+        // this.subjectsData = this.getSubjects();
         console.log(this.subjectsData);
     }
     SurveyService.prototype.subjects = function () {
         return this.subjectsData;
-    };
-    SurveyService.prototype.getSubjects = function () {
-        var _this = this;
-        /* return this.http.get(this.heroesUrl).toPromise()
-             .then(response => response.json().data as Survey[]);*/
-        /* return this.http.get(this.heroesUrl)
-             .map(res => <Survey[]> res.json())re
-             .subscribe(data => this.subjectsData = data);*/
-        return fetch(this.heroesUrl).then(function (response) {
-            console.log(response.json());
-            return response.json();
-        }).then(function (data) {
-            _this.subjectsData = data;
-        }).catch(function (ex) {
-            console.error('Error fetching users', ex);
-        });
     };
     SurveyService = __decorate([
         core_1.Injectable(), 

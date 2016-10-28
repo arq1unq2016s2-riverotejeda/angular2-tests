@@ -1,8 +1,9 @@
 {
 
-  "ambientDependencies": {
+"ambientDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160215162030"
   }
+
 ,
   "globalDependencies": {
     "es6-shim": "registry:dt/es6-shim#0.31.2+20160602141504"

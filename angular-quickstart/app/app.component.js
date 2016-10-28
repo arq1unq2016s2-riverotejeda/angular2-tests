@@ -9,21 +9,42 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var survey_service_1 = require('./survey.service');
 var http_1 = require("@angular/http");
+require('rxjs/add/operator/map');
+require('rxjs/Rx');
+var data_service_1 = require("./data.service");
 var Survey = (function () {
-    function Survey(http) {
+    function Survey(http, _dataService) {
         this.http = http;
-        var ss = new survey_service_1.SurveyService(http);
+        this._dataService = _dataService;
+        // var  ss = new DataService(http);
         //  console.log(ss.subjects());
         //console.log(ss.getSubjects());
+        //console.log(this.subjects);
+        this.ngOnInit();
+        console.log('constructor');
     }
+    Survey.prototype.ngOnInit = function () {
+        this._dataService
+            .GetAll()
+            .subscribe(function (data) { return console.log(data); });
+        /* error => console.log(error),
+         () => {
+           this._toasterService.pop('success', 'Complete', 'Getting all values complete');
+           this._slimLoadingBarService.complete();
+         });
+         "typings": "^1.4.0"
+         */
+        //      console.log(this.subjects);
+        console.log('ngOnInit');
+    };
     Survey = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: '<h1>My First Angular App</h1>'
+            template: '<h1>H</h1>',
+            providers: [data_service_1.DataService]
         }), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [http_1.Http, data_service_1.DataService])
     ], Survey);
     return Survey;
 }());
