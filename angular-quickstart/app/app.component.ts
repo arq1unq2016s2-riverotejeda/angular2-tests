@@ -9,13 +9,15 @@ import {DataService} from "./data.service";
 
 @Component({
   selector: 'my-app',
-  template: '<h1>H</h1>',
+
+  templateUrl: 'app/app.template.html',
+      //'<h1>H</h1>',
     providers: [DataService]
 
 })
 export class Survey implements  OnInit{
 
-    public subjects : Array<any>;
+    public mySubjects :string;
     public loading : Boolean;
 
 
@@ -36,9 +38,14 @@ export class Survey implements  OnInit{
 
   ngOnInit(){
 
+      this._dataService.GetAll()
+          .subscribe(
+              data => this.mySubjects= data, // put the data returned from the server in our variable
+              error => console.log("Error HTTP GET Service"), // in case of failure show this message
+              () => console.log("Job Done Get !")//run this code in all cases
+          );
 
-
-    this._dataService
+   /* this._dataService
         .GetAll()
         .subscribe(data => {this.subjects = data,  console.log(this.subjects);},
             error => console.log(error)
@@ -66,7 +73,12 @@ export class Survey implements  OnInit{
   }
 
   getSubjects() {
-
+      this._dataService.GetAll()
+          .subscribe(
+              data => this.mySubjects= JSON.stringify(data), // put the data returned from the server in our variable
+              error => console.log("Error HTTP GET Service"), // in case of failure show this message
+              () => console.log("Job Done Get !")//run this code in all cases
+          );
 
 
 

@@ -28,19 +28,28 @@ var Survey = (function () {
     }
     Survey.prototype.ngOnInit = function () {
         var _this = this;
-        this._dataService
-            .GetAll()
-            .subscribe(function (data) { _this.subjects = data, console.log(_this.subjects); }, function (error) { return console.log(error); });
-        /*this._dataService
-            .GetAll()
-            .subscribe(data => console.log(data));
-               /* error => console.log(error),
-                () => {
-                  this._toasterService.pop('success', 'Complete', 'Getting all values complete');
-                  this._slimLoadingBarService.complete();
-                });
-                "typings": "^1.4.0"
-                */
+        this._dataService.GetAll()
+            .subscribe(function (data) { return _this.mySubjects = data; }, // put the data returned from the server in our variable
+        function (// put the data returned from the server in our variable
+            error) { return console.log("Error HTTP GET Service"); }, // in case of failure show this message
+        function () { return console.log("Job Done Get !"); } //run this code in all cases
+         //run this code in all cases
+        );
+        /* this._dataService
+             .GetAll()
+             .subscribe(data => {this.subjects = data,  console.log(this.subjects);},
+                 error => console.log(error)
+                 );
+         /*this._dataService
+             .GetAll()
+             .subscribe(data => console.log(data));
+                /* error => console.log(error),
+                 () => {
+                   this._toasterService.pop('success', 'Complete', 'Getting all values complete');
+                   this._slimLoadingBarService.complete();
+                 });
+                 "typings": "^1.4.0"
+                 */
         //      console.log(this.subjects);
         //   console.log('ngOnInit');
         /*  this.getSubjects();
@@ -51,12 +60,21 @@ var Survey = (function () {
          console.log(this.subjects);*/
     };
     Survey.prototype.getSubjects = function () {
+        var _this = this;
+        this._dataService.GetAll()
+            .subscribe(function (data) { return _this.mySubjects = JSON.stringify(data); }, // put the data returned from the server in our variable
+        function (// put the data returned from the server in our variable
+            error) { return console.log("Error HTTP GET Service"); }, // in case of failure show this message
+        function () { return console.log("Job Done Get !"); } //run this code in all cases
+         //run this code in all cases
+        );
         /*return this._dataService.GetAll().subscribe(res =>  {this.subjects = res, console.log(this.subjects), this.loading =false});*/
     };
     Survey = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: '<h1>H</h1>',
+            templateUrl: 'app/app.template.html',
+            //'<h1>H</h1>',
             providers: [data_service_1.DataService]
         }), 
         __metadata('design:paramtypes', [http_1.Http, data_service_1.DataService])
